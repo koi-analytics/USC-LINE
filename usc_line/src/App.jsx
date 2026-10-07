@@ -148,7 +148,7 @@ function App() {
           </form>
         </section>
 
-        {/*FILA*/}
+        {/* FILA */}
         <section className="fila-section">
           <h2 className="titulo-fila">
             FILA DE HOJE
@@ -158,49 +158,49 @@ function App() {
             <div className="fila-vazia">
               Nenhuma pessoa aguardando no momento.
             </div>
-            ) : (
-              <div className="fila">
+             ) : (
+            <div className="fila">
+          {fila.map((pessoa, index) => (
+            <div
+              className={`pessoa ${
+              pessoa.prioritario
+                ? "pessoa-prioritaria"
+                : ""
+              }`}
+              key={pessoa.id}
+            >
+              <div className="numero">
+                <span>{pessoa.senha}</span>
+              </div>
 
-                {fila.map((pessoa, index) => (
-                  <div
-                    className={`pessoa ${
-                      pessoa.priority
-                      ? "pessoa-prioritaria"
-                      : ""
-                    }`}
-                    key={pessoa.id}>
-                      
-                      <div className="numero">
-                    <span>{pessoa.senha}</span>
-                  </div>
+              <div className="dados">
+                <strong>{pessoa.nome}</strong>
 
-                  <div className="dados">
-                    <strong>{pessoa.nome}</strong>
+                <span>{pessoa.motivo}</span>
 
-                    <span>{pessoa.motivo}</span>
+                <small>
+                  Entrada: {pessoa.horario}
+                </small>
 
-                    <small>
-                      Entrada: {pessoa.horario}
-                    </small>
+                {pessoa.prioritario && (
+                  <span className="badge">
+                    Atendimento preferencial
+                  </span>
+                  )}
+              </div>
 
-                    {pessoa.prioritario && (
-                      <span className="badge">
-                        Atendimento preferencial
-                      </span>
-                    )}
-                  </div>
-
-                  <button
-                    className="remover"
-                    onClick={() => removerDaFila(pessoa.id)}
-                    title="Remover da fila"
-                  >
-                    ×
-                  </button>
-                </div>
-    
-        </section>
-      </main>
+                <button
+                  className="remover"
+                  onClick={() => removerDaFila(pessoa.id)}
+                  title="Remover da fila"
+                >
+                </button>
+            </div>
+            ))}
+          </div>
+        )}
+      </section>
+    </main>
   </div>
    
      
