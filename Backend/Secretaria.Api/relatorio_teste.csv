@@ -1,0 +1,6 @@
+﻿Senha;Nome;Descrição;Preferencial;Status;Criada em;Chamada em;Início do atendimento;Fim do atendimento;Mesa;Resultado;Observação
+"P001";"Maria da Silva";"Atendimento preferencial";"Sim";"FINALIZADO";"07/10/2026 04:18:21";"07/10/2026 04:40:29";"07/10/2026 04:44:54";"07/10/2026 06:07:02";"1";"";""
+"N001";"João da Silva";"Solicitar documento";"Não";"FINALIZADO";"07/10/2026 04:17:41";"07/10/2026 06:12:33";"07/10/2026 06:12:44";"07/10/2026 06:12:50";"1";"Atendimento realizado com sucesso";"Teste do histórico"
+"N002";"Teste Histórico";"Teste de registro de atendimento";"Não";"CANCELADO";"07/10/2026 06:11:35";"";"";"";"";"";""
+"N001";"Teste Chamada Manual";"Teste de chamada manual";"Não";"CHAMADO";"08/10/2026 04:22:05";"08/10/2026 04:26:54";"";"";"3";"";""
+"N001";"Teste Painel";"Teste do acompanhamento";"Não";"AGUARDANDO";"15/10/2026 05:48:32";"";"";"";"";"";""
