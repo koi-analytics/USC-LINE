@@ -1,0 +1,36 @@
+name: Compilar UNISAGRADO Atendente para Windows
+on:
+  workflow_dispatch:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: usc_line/package-lock.json
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Compilar somente o React do atendente
+        shell: pwsh
+        run: |
+          cd usc_line
+          npm ci
+          npm run build -- --config vite.desktop.config.js
+      - name: Publicar executavel win-x64
+        shell: pwsh
+        run: |
+          dotnet publish AtendenteWindows/AtendenteWindows.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish
+      - name: Criar pacote para instalar em todos os PCs
+        shell: pwsh
+        run: Compress-Archive -Path publish/* -DestinationPath UNISAGRADO-Atendente-v1.0-win-x64.zip
+      - name: Disponibilizar download
+        uses: actions/upload-artifact@v4
+        with:
+          name: UNISAGRADO-Atendente-v1.0-win-x64
+          path: UNISAGRADO-Atendente-v1.0-win-x64.zip
+          if-no-files-found: error

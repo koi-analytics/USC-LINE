@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Secretaria.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11909ae25f1c30b547dc3a65512ee56409c05c5c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9ba1408170dc64289aa50d54597ce62acf8f671")]
 [assembly: System.Reflection.AssemblyProductAttribute("Secretaria.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Secretaria.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
