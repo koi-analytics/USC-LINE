@@ -2,10 +2,23 @@ using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Controllers e OpenAPI
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
-// Lê a conexão do appsettings.Development.json
+// Permite que o site dos alunos na Vercel acesse a API
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("VercelAlunos", policy =>
+    {
+        policy
+            .WithOrigins("https://usc-line.vercel.app")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+// Conexão com o Supabase
 var connectionString = builder.Configuration.GetConnectionString("Supabase");
 
 if (string.IsNullOrWhiteSpace(connectionString))
@@ -15,7 +28,6 @@ if (string.IsNullOrWhiteSpace(connectionString))
     );
 }
 
-// Registra a conexão com o PostgreSQL/Supabase
 builder.Services.AddSingleton<NpgsqlDataSource>(_ =>
 {
     return NpgsqlDataSource.Create(connectionString);
@@ -27,6 +39,10 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+// Habilita o CORS antes de atender as requisições
+app.UseRouting();
+app.UseCors("VercelAlunos");
 
 app.MapControllers();
 
